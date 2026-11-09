@@ -3,101 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Recent Updates</title>
+<meta name="robots" content="noindex">
+<title>Admin</title>
 <style>
-:root{--bg:#f7f4ef;--card:#fff;--text:#2a2622;--muted:#8a8279;--line:#e8e3dc;--accent:#d9622b;--accent-text:#fff;--shadow:0 2px 14px rgba(60,40,20,.08)}
-@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#161412;--card:#221f1c;--text:#f0ebe4;--muted:#9a9189;--line:#38342f;--accent:#e8794a;--accent-text:#1a1008;--shadow:0 2px 14px rgba(0,0,0,.4)}}
+:root{--bg:#f7f4ef;--card:#fff;--text:#2a2622;--muted:#8a8279;--line:#e8e3dc;--accent:#d9622b;--accent-text:#fff}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#161412;--card:#221f1c;--text:#f0ebe4;--muted:#9a9189;--line:#38342f;--accent:#e8794a;--accent-text:#1a1008}}
 *{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Georgia,"Times New Roman",serif}
-main{max-width:640px;margin:0 auto;padding:36px 16px 60px}
-header{text-align:center;margin-bottom:22px}
-h1{font-size:2.3rem;margin:0 0 4px;letter-spacing:-.02em;line-height:1.15}
-.sub{color:var(--muted);margin:0;font-style:italic}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif}
+main{max-width:620px;margin:0 auto;padding:28px 16px 60px}
+h1{font:1.7rem Georgia,serif;margin:0 0 4px}h2{font-size:1rem;margin:0 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:18px}
+.muted,small{color:var(--muted)}small{font-size:.8rem}
+label{display:block;font-size:.85rem;color:var(--muted);margin:8px 0 3px}
+input[type=text],input[type=password],input[type=date]{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
 button{font:600 .9rem system-ui,sans-serif;border:0;border-radius:10px;padding:10px 16px;background:var(--accent);color:var(--accent-text);cursor:pointer}
-.bar{display:flex;justify-content:center;margin-bottom:18px}
-.seg{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px}
-.seg button{background:none;color:var(--muted);padding:6px 18px;border-radius:999px}
-.seg button.on{background:var(--accent);color:var(--accent-text)}
-.post{background:var(--card);border-radius:16px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow)}
-.post>img,.post>video{display:block;width:100%;max-height:82vh;object-fit:contain;background:#000}
-.post>img{cursor:zoom-in}
-.embed{aspect-ratio:16/9;background:#000}.embed iframe{width:100%;height:100%;border:0}
-.cap{padding:14px 18px 16px}.cap p{margin:0 0 8px;white-space:pre-wrap}
-.meta{color:var(--muted);font:.8rem system-ui,sans-serif}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
-.tile{display:block;width:100%;aspect-ratio:1;padding:0;border-radius:6px;background:#222;position:relative;overflow:hidden}
-.tile img,.tile video{width:100%;height:100%;object-fit:cover;display:block}
-.tile .play{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:1.8rem;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.empty{text-align:center;color:var(--muted);padding:60px 0;font-style:italic}
-#lb{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.93);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px}
-#lbc{max-width:96vw;max-height:76vh;display:flex}
-#lbc img,#lbc video{max-width:96vw;max-height:76vh;object-fit:contain}
-#lbc iframe{width:min(96vw,900px);aspect-ratio:16/9;border:0}
-#lbcap{color:#eee;max-width:620px;text-align:center;margin-top:14px;white-space:pre-wrap}
-#lbcap small{display:block;color:#999;font:.8rem system-ui,sans-serif;margin-top:4px}
-#lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border-radius:999px;width:44px;height:44px;padding:0;font-size:1.3rem}
-#lbx{top:14px;right:14px}#lbp{left:12px;top:50%}#lbn{right:12px;top:50%}
+button.ghost{background:none;color:var(--muted);padding:6px 8px;font-weight:500}
+button.sec{background:var(--bg);color:var(--text);border:1px solid var(--line)}
+button:disabled{opacity:.5}
+a{color:var(--accent)}
+.drop{display:block;text-align:center;padding:22px 10px;border:2px dashed var(--line);border-radius:12px;color:var(--muted);cursor:pointer;margin:0 0 10px;font-size:1rem}
+.drop.over{border-color:var(--accent);color:var(--accent)}
+.pi{display:flex;gap:10px;margin-bottom:10px;align-items:center}
+.th{width:64px;height:64px;border-radius:8px;background:var(--bg);flex:none;display:grid;place-items:center;overflow:hidden;font-size:1.3rem}
+.th img,.th video{width:100%;height:100%;object-fit:cover}
+.f{flex:1;min-width:0}.f input{margin-bottom:6px}
+.row{display:flex;gap:8px}
+#st{margin:10px 0 0;font-size:.9rem}.err{color:#d33}.ok{color:#2a9d4a}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 </style>
 </head>
 <body>
 <main>
-  <header><h1 id="title">Recent Updates</h1><p class="sub" id="subtitle"></p></header>
-  <div class="bar"><div class="seg"><button data-v="feed">Feed</button><button data-v="grid">Grid</button></div></div>
-  <div id="feed"><div class="empty">Loading…</div></div>
+  <h1>Admin</h1>
+  <div id="st" role="status"></div>
+
+  <div id="connect" class="card" hidden>
+    <h2>Connect to GitHub</h2>
+    <p class="muted" style="margin-top:0">Your token stays in this browser only. Create a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">fine-grained token</a> with <b>Only select repositories</b> → your site’s repo, and <b>Contents: Read and write</b>.</p>
+    <label>Repository (owner/name)</label><input type="text" id="repo" placeholder="yourname/yourrepo">
+    <label>Branch</label><input type="text" id="branch" value="main">
+    <label>Token</label><input type="password" id="token" placeholder="github_pat_…" autocomplete="off">
+    <p><button id="go">Connect</button></p>
+  </div>
+
+  <div id="panel" hidden>
+    <div class="top"><small id="who"></small><span><a href="../" id="view">View site</a> <button class="ghost" id="out">Log out</button></span></div>
+
+    <div class="card"><h2>Page details</h2>
+      <label>Title</label><input type="text" id="ttl"><label>Subtitle</label><input type="text" id="sub">
+      <p><button id="savedet">Save details</button></p></div>
+
+    <div class="card"><h2>Add photos &amp; videos</h2>
+      <label class="drop" id="drop">Tap to choose files, or drop them here<input type="file" id="file" multiple accept="image/*,video/*" hidden></label>
+      <div id="pend"></div>
+      <div class="row"><input type="text" id="link" placeholder="…or paste a YouTube/Vimeo link"><button class="sec" id="addlink">Add</button></div></div>
+
+    <div class="card"><h2>Posts</h2><div id="plist"></div></div>
+  </div>
 </main>
-<div id="lb" hidden>
-  <button id="lbx" aria-label="Close">✕</button><button id="lbp" aria-label="Previous">‹</button><button id="lbn" aria-label="Next">›</button>
-  <div id="lbc"></div><div id="lbcap"></div>
-</div>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const enc = s => btoa(unescape(encodeURIComponent(s)));
+const dec = s => decodeURIComponent(escape(atob(s.replace(/\n/g,''))));
+const today = () => new Date().toISOString().slice(0,10);
 const fmt = d => { const t = new Date(d+'T12:00:00'); return isNaN(t) ? '' : t.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}); };
-let data = {title:'Recent Updates', subtitle:'', posts:[]}, view = 'feed', lb = -1;
+const KEY = 'gallery-admin';
+let cfg = null, data = {title:'Recent Updates', subtitle:'', posts:[]}, pending = [];
+try { cfg = JSON.parse(localStorage.getItem(KEY)); } catch(e){}
 
-fetch('posts.json?t=' + Date.now()).then(r => { if(!r.ok) throw 0; return r.json(); })
-  .then(d => { data = d; data.posts = data.posts || []; render(); })
-  .catch(() => { $('#feed').innerHTML = '<div class="empty">Couldn’t load the posts. This page needs to be opened from its hosted address.</div>'; });
+function status(msg, cls){ const s = $('#st'); s.textContent = msg||''; s.className = cls||'muted'; }
+function guessRepo(){
+  const o = location.hostname.endsWith('.github.io') ? location.hostname.split('.')[0] : '';
+  const p = location.pathname.split('/').filter(Boolean), i = p.indexOf('admin');
+  const r = i>0 ? p[0] : (o ? o + '.github.io' : '');
+  return o && r ? o + '/' + r : '';
+}
 
-function feedItem(p,i){
-  let m;
-  if(p.type==='video') m = `<video src="${esc(p.src)}" controls playsinline preload="metadata"></video>`;
-  else if(p.type==='embed') m = `<div class="embed"><iframe src="${esc(p.src)}" allowfullscreen loading="lazy"></iframe></div>`;
-  else m = `<img src="${esc(p.src)}" alt="${esc(p.caption||'photo')}" loading="lazy" data-open="${i}">`;
-  return `<article class="post">${m}<div class="cap">${p.caption?`<p>${esc(p.caption)}</p>`:''}<div class="meta">${esc(fmt(p.d))}</div></div></article>`;
+async function gh(path, method='GET', body){
+  const url = `https://api.github.com/repos/${cfg.repo}/contents/${path}` + (method==='GET' ? `?ref=${encodeURIComponent(cfg.branch)}&t=${Date.now()}` : '');
+  const r = await fetch(url, {method, headers:{Authorization:'Bearer '+cfg.token, Accept:'application/vnd.github+json'}, body: body ? JSON.stringify(body) : undefined});
+  if(r.status===404 && method==='GET') return null;
+  const j = await r.json().catch(() => ({}));
+  if(!r.ok) throw new Error(r.status===401 ? 'GitHub rejected the token. It may be wrong or expired.'
+    : (r.status===403 || r.status===404) ? 'No permission. The token needs “Contents: Read and write” on this repo.' : (j.message || 'GitHub error ' + r.status));
+  return j;
 }
-function gridItem(p,i){
-  const inner = p.type==='image' ? `<img src="${esc(p.src)}" alt="" loading="lazy">`
-    : p.type==='video' ? `<video src="${esc(p.src)}#t=0.1" preload="metadata" muted></video><span class="play">▶</span>` : `<span class="play">▶</span>`;
-  return `<button class="tile" data-open="${i}" aria-label="Open">${inner}</button>`;
+async function load(){
+  const f = await gh('posts.json');
+  if(f && f.content) { data = JSON.parse(dec(f.content)); data.posts = data.posts || []; }
 }
-function render(){
-  $('#title').textContent = data.title || 'Recent Updates';
-  document.title = data.title || 'Recent Updates';
-  $('#subtitle').textContent = data.subtitle || ''; $('#subtitle').hidden = !data.subtitle;
-  document.querySelectorAll('.seg button').forEach(b => b.classList.toggle('on', b.dataset.v===view));
-  $('#feed').innerHTML = !data.posts.length ? '<div class="empty">Nothing posted yet. Check back soon!</div>'
-    : view==='grid' ? `<div class="grid">${data.posts.map(gridItem).join('')}</div>` : data.posts.map(feedItem).join('');
+async function save(msg){
+  const f = await gh('posts.json');
+  const body = {message:msg, content:enc(JSON.stringify(data,null,1)), branch:cfg.branch};
+  if(f) body.sha = f.sha;
+  await gh('posts.json','PUT',body);
 }
-$('#feed').addEventListener('click', e => { const t = e.target.closest('[data-open]'); if(t) openLb(+t.dataset.open); });
-document.querySelector('.seg').onclick = e => { const b = e.target.closest('button'); if(b){ view = b.dataset.v; render(); } };
 
-function openLb(i){ lb = i; showLb(); $('#lb').hidden = false; }
-function closeLb(){ $('#lb').hidden = true; $('#lbc').innerHTML = ''; }
-function showLb(){
-  const p = data.posts[lb]; if(!p) return closeLb();
-  $('#lbc').innerHTML = p.type==='video' ? `<video src="${esc(p.src)}" controls autoplay playsinline></video>`
-    : p.type==='embed' ? `<iframe src="${esc(p.src)}" allowfullscreen></iframe>` : `<img src="${esc(p.src)}" alt="">`;
-  $('#lbcap').innerHTML = esc(p.caption||'') + `<small>${esc(fmt(p.d))}</small>`;
-  $('#lbp').hidden = lb<=0; $('#lbn').hidden = lb>=data.posts.length-1;
+/* ---------- connect ---------- */
+function show(){
+  $('#connect').hidden = !!cfg; $('#panel').hidden = !cfg;
+  if(!cfg){ $('#repo').value = guessRepo(); return; }
+  $('#who').textContent = 'Connected to ' + cfg.repo;
+  $('#ttl').value = data.title||''; $('#sub').value = data.subtitle||'';
+  renderPosts(); renderPending();
 }
-const step = d => { const n = lb+d; if(n>=0 && n<data.posts.length){ lb = n; showLb(); } };
-$('#lbx').onclick = closeLb; $('#lbp').onclick = () => step(-1); $('#lbn').onclick = () => step(1);
-$('#lb').addEventListener('click', e => { if(e.target.id==='lb' || e.target.id==='lbc') closeLb(); });
-document.addEventListener('keydown', e => { if($('#lb').hidden) return; if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') step(-1); if(e.key==='ArrowRight') step(1); });
-let tx = null;
-$('#lb').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
-$('#lb').addEventListener('touchend', e => { if(tx===null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if(Math.abs(dx)>60) step(dx<0?1:-1); });
+$('#go').onclick = async () => {
+  const c = {repo:$('#repo').value.trim(), branch:$('#branch').value.trim()||'main', token:$('#token').value.trim()};
+  if(!/^[\w.-]+\/[\w.-]+$/.test(c.repo) || !c.token){ status('Enter the repo as owner/name and paste your token.','err'); return; }
+  cfg = c; status('Connecting…');
+  try {
+    const r = await fetch('https://api.github.com/repos/'+c.repo, {headers:{Authorization:'Bearer '+c.token}});
+    if(!r.ok) throw new Error(r.status===401 ? 'GitHub rejected the token.' : 'Couldn’t find that repo with this token.');
+    await load(); localStorage.setItem(KEY, JSON.stringify(c)); status('Connected.','ok'); show();
+  } catch(e){ cfg = null; status(e.message,'err'); }
+};
+$('#out').onclick = () => { localStorage.removeItem(KEY); cfg = null; $('#token').value = ''; status('Logged out.'); show(); };
+
+/* ---------- details ---------- */
+$('#savedet').onclick = async () => {
+  data.title = $('#ttl').value.trim(); data.subtitle = $('#sub').value.trim();
+  status('Saving…');
+  try { await save('Update page details'); status('Saved. The site updates in about a minute.','ok'); } catch(e){ status(e.message,'err'); }
+};
+
+/* ---------- add ---------- */
+function parseLink(u){
+  u = u.trim(); let m;
+  if(m = u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/)) return {type:'embed', src:'https://www.youtube.com/embed/'+m[1]};
+  if(m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/)) return {type:'embed', src:'https://player.vimeo.com/video/'+m[1]};
+  if(/^https?:\/\/.+\.(mp4|webm|mov)(\?.*)?$/i.test(u)) return {type:'video', src:u};
+  if(/^https?:\/\/.+\.(jpe?g|png|gif|webp)(\?.*)?$/i.test(u)) return {type:'image', src:u};
+  return null;
+}
+const toB64 = f => new Promise((res,rej) => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.onerror = rej; r.readAsDataURL(f); });
+const shrink = f => new Promise((res,rej) => {
+  const img = new Image();
+  img.onload = () => {
+    const s = Math.min(1, 1800/Math.max(img.width,img.height)), c = document.createElement('canvas');
+    c.width = Math.round(img.width*s); c.height = Math.round(img.height*s);
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height); res(c.toDataURL('image/jpeg',.85).split(',')[1]);
+  };
+  img.onerror = rej; img.src = URL.createObjectURL(f);
+});
+function addFiles(files){
+  for(const f of files){
+    if(!/^(image|video)\//.test(f.type)) continue;
+    pending.push({file:f, type:f.type.startsWith('video')?'video':'image', caption:'', d:new Date(f.lastModified||Date.now()).toISOString().slice(0,10), prev:URL.createObjectURL(f)});
+  }
+  renderPending();
+}
+function renderPending(){
+  const box = $('#pend');
+  box.innerHTML = pending.map((p,i) => `<div class="pi"><div class="th">${p.file ? (p.type==='video' ? `<video src="${p.prev}"></video>` : `<img src="${p.prev}" alt="">`) : '🔗'}</div>
+    <div class="f"><input type="text" data-c="${i}" placeholder="Caption…" value="${esc(p.caption)}"><input type="date" data-d="${i}" value="${esc(p.d)}"></div>
+    <button class="ghost" data-x="${i}" aria-label="Remove">✕</button></div>`).join('')
+    + (pending.length ? `<p><button id="addall">Upload ${pending.length} to site</button></p>` : '');
+  box.oninput = e => { const t = e.target; if(t.dataset.c!==undefined) pending[+t.dataset.c].caption = t.value; if(t.dataset.d!==undefined) pending[+t.dataset.d].d = t.value; };
+  box.onclick = e => { const x = e.target.closest('[data-x]'); if(x){ pending.splice(+x.dataset.x,1); renderPending(); } };
+  if(pending.length) $('#addall').onclick = upload;
+}
+async function upload(){
+  const btn = $('#addall'); btn.disabled = true;
+  try {
+    const made = []; let n = 0;
+    for(const p of pending){
+      n++; let src = p.src;
+      if(p.file){
+        if(p.type==='video' && p.file.size > 40*1048576) throw new Error('“'+p.file.name+'” is over 40 MB. Upload it to YouTube and paste the link instead.');
+        status(`Uploading ${n} of ${pending.length}…`);
+        const ext = p.type==='image' ? 'jpg' : ((p.file.name.split('.').pop()||'mp4').toLowerCase().replace(/[^a-z0-9]/g,'') || 'mp4');
+        const name = Date.now() + '-' + Math.random().toString(36).slice(2,6) + '.' + ext;
+        const b64 = p.type==='image' ? await shrink(p.file) : await toB64(p.file);
+        await gh('media/'+name, 'PUT', {message:'Add '+name, content:b64, branch:cfg.branch});
+        src = 'media/' + name;
+      }
+      made.push({id:'p'+Date.now()+Math.random().toString(36).slice(2,6), src, type:p.type, caption:p.caption.trim(), d:p.d||today()});
+    }
+    status('Publishing…');
+    data.posts = made.concat(data.posts);
+    await save('Add ' + made.length + ' post' + (made.length>1?'s':''));
+    pending = []; renderPending(); renderPosts();
+    status('Done! It will show on the site in about a minute.','ok');
+  } catch(e){ status(e.message,'err'); const b = $('#addall'); if(b) b.disabled = false; }
+}
+$('#file').onchange = e => { addFiles(e.target.files); e.target.value = ''; };
+const drop = $('#drop');
+drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+drop.ondragleave = () => drop.classList.remove('over');
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); addFiles(e.dataTransfer.files); };
+$('#addlink').onclick = () => {
+  const r = parseLink($('#link').value);
+  if(!r){ alert('That link isn’t recognized. Try a YouTube or Vimeo link, or a direct link ending in .mp4 or .jpg.'); return; }
+  pending.push({...r, caption:'', d:today()}); $('#link').value = ''; renderPending();
+};
+
+/* ---------- manage ---------- */
+const rel = s => /^https?:/.test(s) ? s : '../' + s;
+function renderPosts(){
+  $('#plist').innerHTML = data.posts.map(p => `<div class="pi"><div class="th">${p.type==='image' ? `<img src="${esc(rel(p.src))}" alt="">` : p.type==='video' && !/^https?:/.test(p.src) ? `<video src="${esc(rel(p.src))}#t=0.1" preload="metadata"></video>` : '▶'}</div>
+    <div class="f"><div>${esc(p.caption||'(no caption)')}</div><small>${esc(fmt(p.d))}</small></div>
+    <button class="ghost" data-e="${esc(p.id)}">Edit</button><button class="ghost" data-del="${esc(p.id)}">Delete</button></div>`).join('') || '<p class="muted">No posts yet.</p>';
+}
+$('#plist').onclick = async e => {
+  const t = e.target.closest('[data-e],[data-del]'); if(!t) return;
+  const p = data.posts.find(x => x.id === (t.dataset.e||t.dataset.del)); if(!p) return;
+  try {
+    if(t.dataset.e){
+      const c = prompt('Edit caption', p.caption||''); if(c===null) return;
+      p.caption = c.trim(); status('Saving…'); await save('Edit caption');
+    } else {
+      if(!confirm('Delete this post?')) return;
+      status('Deleting…');
+      data.posts = data.posts.filter(x => x!==p); await save('Remove post');
+      if(p.src.startsWith('media/')){ const f = await gh(p.src); if(f) await gh(p.src,'DELETE',{message:'Delete '+p.src, sha:f.sha, branch:cfg.branch}); }
+    }
+    renderPosts(); status('Saved. The site updates in about a minute.','ok');
+  } catch(err){ status(err.message,'err'); }
+};
+
+(async () => {
+  if(cfg){ status('Loading…'); try { await load(); status(''); } catch(e){ status(e.message,'err'); } }
+  show();
+})();
 </script>
 </body>
 </html>
