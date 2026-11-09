@@ -1,5 +1,13 @@
 {
  "title": "Recent Updates",
  "subtitle": "Photos and videos, newest first",
- "posts": []
+ "posts": [
+  {
+   "id": "p1794255967038z23d",
+   "src": "media/1794255964985-2juz.jpg",
+   "type": "image",
+   "caption": "This is a test to make sure the site is working.",
+   "d": "2025-11-27"
+  }
+ ]
 }
