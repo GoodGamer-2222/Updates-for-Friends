@@ -3,6 +3,13 @@
  "subtitle": "Photos and videos, newest first",
  "posts": [
   {
+   "id": "p1795048872187qoum",
+   "src": "media/1795048861313-kklf.mp4",
+   "type": "video",
+   "caption": "Time Lapse of me working on \"school\" (looking up pictures of different types of cats)",
+   "d": "2026-09-08"
+  },
+  {
    "id": "p1794255967038z23d",
    "src": "media/1794255964985-2juz.jpg",
    "type": "image",
